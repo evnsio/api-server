@@ -20,6 +20,7 @@ func main() {
     router.HandleFunc("/", Logger(Index))
     router.HandleFunc("/health", Logger(Health))
     router.HandleFunc("/toggle-health", Logger(ToggleHealth))
+    router.HandleFunc("/crash", Logger(Crash))
 
     log.Fatal(http.ListenAndServe(":8080", router))
 }
@@ -45,4 +46,9 @@ func Health(w http.ResponseWriter, r *http.Request) {
 func ToggleHealth(w http.ResponseWriter, r *http.Request) {
     SERVICE_HEALTHY = !SERVICE_HEALTHY
     fmt.Fprintf(w, "Service Health set to %v (%v)\n", SERVICE_HEALTHY, HOST)
+}
+
+
+func Crash(w http.ResponseWriter, r *http.Request) {
+    os.Exit(1)
 }

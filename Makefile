@@ -1,4 +1,4 @@
-IMAGE := api-server
+IMAGE := simple-server
 
 build:
 	docker build -t $(IMAGE) .

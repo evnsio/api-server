@@ -18,7 +18,7 @@ func main() {
 
     router := mux.NewRouter().StrictSlash(true)
     router.HandleFunc("/", Logger(Index))
-    router.HandleFunc("/health", Logger(Health))
+    router.HandleFunc("/status", Logger(Health))
     router.HandleFunc("/toggle-health", Logger(ToggleHealth))
     router.HandleFunc("/crash", Logger(Crash))
 
